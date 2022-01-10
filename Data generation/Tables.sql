@@ -1,0 +1,15 @@
+insert into Tables (table_id, numberofchairs, active) values (1, 5, 1);
+insert into Tables (table_id, numberofchairs, active) values (2, 3, 1);
+insert into Tables (table_id, numberofchairs, active) values (3, 5, 1);
+insert into Tables (table_id, numberofchairs, active) values (4, 3, 0);
+insert into Tables (table_id, numberofchairs, active) values (5, 2, 1);
+insert into Tables (table_id, numberofchairs, active) values (6, 4, 1);
+insert into Tables (table_id, numberofchairs, active) values (7, 2, 0);
+insert into Tables (table_id, numberofchairs, active) values (8, 4, 1);
+insert into Tables (table_id, numberofchairs, active) values (9, 2, 1);
+insert into Tables (table_id, numberofchairs, active) values (10, 2, 0);
+insert into Tables (table_id, numberofchairs, active) values (11, 5, 1);
+insert into Tables (table_id, numberofchairs, active) values (12, 2, 1);
+insert into Tables (table_id, numberofchairs, active) values (13, 5, 1);
+insert into Tables (table_id, numberofchairs, active) values (14, 5, 0);
+insert into Tables (table_id, numberofchairs, active) values (15, 4, 1);

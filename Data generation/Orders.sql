@@ -1,0 +1,11 @@
+insert into Orders (reservation_id, menu_id, product_id, amount) values (1, 4, 2, 2);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (2, 2, 7, 1);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (3, 2, 10, 1);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (4, 2, 7, 2);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (5, 3, 3, 1);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (6, 2, 11, 2);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (7, 1, 8, 1);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (8, 5, 13, 2);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (9, 2, 20, 1);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (10, 1, 17, 2);
+insert into Orders (reservation_id, menu_id, product_id, amount) values (10, 1, 8, 3);
