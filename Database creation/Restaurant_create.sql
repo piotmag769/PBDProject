@@ -66,9 +66,10 @@ CREATE TABLE Individual (
 
 -- Table: Invoices
 CREATE TABLE Invoices (
-    Invoice_ID int  NOT NULL,
+    Invoice_ID varchar(20)  NOT NULL,
     Reservation_ID int  NOT NULL,
-    CONSTRAINT Invoices_pk PRIMARY KEY  (Invoice_ID, Reservation_ID)
+    CONSTRAINT Invoice_ID_Check CHECK (Invoice_ID not like '%[^0-9/]%'),
+    CONSTRAINT Invoices_pk PRIMARY KEY  (Invoice_ID,Reservation_ID)
 );
 
 -- Table: Menu
@@ -82,12 +83,13 @@ CREATE TABLE Menu (
 
 -- Table: Names
 CREATE TABLE Names (
+    Reservation_ID int  NOT NULL,
+    Guest_ID int  NOT NULL,
     FirstName varchar(35)  NOT NULL,
     LastName varchar(35)  NOT NULL,
-    Reservation_ID int  NOT NULL,
     CONSTRAINT FirstName_Check CHECK (FirstName not like '%[^a-zA-Z]%'),
     CONSTRAINT LastName_Check CHECK (LastName not like '%[^a-zA-Z]%'),
-    CONSTRAINT Names_pk PRIMARY KEY  (FirstName,LastName,Reservation_ID)
+    CONSTRAINT Names_pk PRIMARY KEY  (Guest_ID,Reservation_ID)
 );
 
 -- Table: Orders
