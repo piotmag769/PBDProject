@@ -29,9 +29,9 @@ CREATE TABLE Client_Discounts (
 CREATE TABLE Company (
     Client_ID int  NOT NULL,
     Company_Name varchar(35)  NOT NULL,
-    NIP bigint  NOT NULL,
-    REGON varchar(14)  NOT NULL,
-    KRS bigint  NOT NULL,
+    NIP bigint  NULL,
+    REGON varchar(14)  NULL,
+    KRS bigint  NULL,
     CONSTRAINT NIP_check CHECK (CAST(NIP as nvarchar) like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT REGON_check CHECK (REGON like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT KRS_check CHECK (CAST(KRS as nvarchar)  like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
@@ -59,17 +59,22 @@ CREATE TABLE Individual (
     LastName varchar(35)  NOT NULL,
     OrdersCount int  NOT NULL,
     CONSTRAINT OrdersCount_Check CHECK (OrdersCount >= 0),
-    CONSTRAINT FirstName_Check2 CHECK (FirstName not like '%[^a-zA-Z]%'),
-    CONSTRAINT LastName_Check2 CHECK (LastName not like '%[^a-zA-Z]%'),
     CONSTRAINT Individual_pk PRIMARY KEY  (Client_ID)
 );
 
 -- Table: Invoices
 CREATE TABLE Invoices (
     Invoice_ID varchar(20)  NOT NULL,
-    Reservation_ID int  NOT NULL,
+    Date date  NOT NULL,
+    PersonalData varchar(50)  NOT NULL,
+    Adress varchar(35)  NOT NULL,
+    City varchar(35)  NOT NULL,
+    PostalCode int  NOT NULL,
     CONSTRAINT Invoice_ID_Check CHECK (Invoice_ID not like '%[^0-9/]%'),
-    CONSTRAINT Invoices_pk PRIMARY KEY  (Invoice_ID,Reservation_ID)
+    CONSTRAINT Postal_Code_Check_2 CHECK (PostalCode like '[0-9][0-9][0-9][0-9][0-9]'),
+    CONSTRAINT Address_Check_2 CHECK (Address not like '%[^a-zA-Z0-9. ]%'),
+    CONSTRAINT City_Check_2 CHECK (City not like '%[^a-zA-Z ]%'),
+    CONSTRAINT Invoices_pk PRIMARY KEY  (Invoice_ID)
 );
 
 -- Table: Menu
@@ -87,8 +92,6 @@ CREATE TABLE Names (
     Guest_ID int  NOT NULL,
     FirstName varchar(35)  NOT NULL,
     LastName varchar(35)  NOT NULL,
-    CONSTRAINT FirstName_Check CHECK (FirstName not like '%[^a-zA-Z]%'),
-    CONSTRAINT LastName_Check CHECK (LastName not like '%[^a-zA-Z]%'),
     CONSTRAINT Names_pk PRIMARY KEY  (Guest_ID,Reservation_ID)
 );
 
@@ -139,11 +142,10 @@ CREATE TABLE Reservations (
     EndDate datetime  NOT NULL,
     DiscountType tinyint  NULL,
     Status tinyint  NOT NULL,
+    Invoice_ID varchar(20)  NULL,
     CONSTRAINT Date_Check2 CHECK (StartDate <= EndDate),
     CONSTRAINT DiscountType_Check CHECK (DiscountType in (NULL, 0, 1)),
     CONSTRAINT Status_Check CHECK (Status in (0, 1, 2, 3, 4, 5)),
-    CONSTRAINT FirstName_Check CHECK (FirstName not like'%[^a-z]%'),
-    CONSTRAINT LastName_Check CHECK (LastName not like'%[^a-z]%'),
     CONSTRAINT Reservations_pk PRIMARY KEY  (Reservation_ID)
 );
 
@@ -205,10 +207,10 @@ ALTER TABLE Reservations ADD CONSTRAINT Reservations_Client
     FOREIGN KEY (Client_ID)
     REFERENCES Client (Client_ID);
 
--- Reference: Reservations_Invoices (table: Invoices)
-ALTER TABLE Invoices ADD CONSTRAINT Reservations_Invoices
-    FOREIGN KEY (Reservation_ID)
-    REFERENCES Reservations (Reservation_ID);
+-- Reference: Reservations_Invoices (table: Reservations)
+ALTER TABLE Reservations ADD CONSTRAINT Reservations_Invoices
+    FOREIGN KEY (Invoice_ID)
+    REFERENCES Invoices (Invoice_ID);
 
 -- Reference: Reservations_Names (table: Names)
 ALTER TABLE Names ADD CONSTRAINT Reservations_Names
@@ -224,3 +226,6 @@ ALTER TABLE Reserved_Tables ADD CONSTRAINT Reserved_Tables_Reservations
 ALTER TABLE Reserved_Tables ADD CONSTRAINT Reserved_Tables_Tables
     FOREIGN KEY (Table_ID)
     REFERENCES Tables (Table_ID);
+
+-- End of file.
+
