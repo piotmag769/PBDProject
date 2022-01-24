@@ -118,7 +118,7 @@ CREATE TABLE Product_On_Menu (
 
 -- Table: Products
 CREATE TABLE Products (
-    Product_ID int  NOT NULL,
+    Product_ID int IDENTITY NOT NULL,
     Name varchar(35)  NOT NULL,
     IsSeafood tinyint  NOT NULL,
     CONSTRAINT Name_Check CHECK (Name not like '%[^a-zA-Z ]%'),
@@ -145,7 +145,7 @@ CREATE TABLE Reservations (
     Invoice_ID varchar(20)  NULL,
     CONSTRAINT Date_Check2 CHECK (StartDate <= EndDate),
     CONSTRAINT DiscountType_Check CHECK (DiscountType in (NULL, 0, 1)),
-    CONSTRAINT Status_Check CHECK (Status in (0, 1, 2, 3, 4, 5)),
+    CONSTRAINT Status_Check CHECK (Status in (0, 1, 2, 3, 4, 5, 6)),
     CONSTRAINT Reservations_pk PRIMARY KEY  (Reservation_ID)
 );
 
