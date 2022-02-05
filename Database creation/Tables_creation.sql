@@ -67,7 +67,7 @@ CREATE TABLE Invoices (
     Invoice_ID varchar(20)  NOT NULL,
     Date date  NOT NULL,
     PersonalData varchar(50)  NOT NULL,
-    Adress varchar(35)  NOT NULL,
+    Address varchar(35)  NOT NULL,
     City varchar(35)  NOT NULL,
     PostalCode int  NOT NULL,
     CONSTRAINT Invoice_ID_Check CHECK (Invoice_ID not like '%[^0-9/]%'),
@@ -226,6 +226,3 @@ ALTER TABLE Reserved_Tables ADD CONSTRAINT Reserved_Tables_Reservations
 ALTER TABLE Reserved_Tables ADD CONSTRAINT Reserved_Tables_Tables
     FOREIGN KEY (Table_ID)
     REFERENCES Tables (Table_ID);
-
--- End of file.
-

@@ -20,4 +20,4 @@ insert into Reserved_Tables (reservation_id, table_id) values (18, 15);
 insert into Reserved_Tables (reservation_id, table_id) values (19, 5);
 insert into Reserved_Tables (reservation_id, table_id) values (20, 14);
 
--- w rezerwacji status 0 - nieop³acone na wynos , 1 - op³acone na wynos, 2 - nieop³acone na miejscu, 3 - op³acone na miejscu, 4 - anulowane nieoddane, 5 - anulowane oddane
+-- reservation status where: 0 - unpaid, takeaway , 1 - paid, takeaway, 2 - unpaid, on the spot, 3 - paid, on the spot, 4 - cancelled, refunded, 5 - cancelled, not refunded, 6 â€“ paid, finished
