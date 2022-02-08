@@ -1,2 +1,2 @@
 # PBD_project
-Project concerning a creation of a database for a restaurant for Fundamentals of Databases 2021/22
+Project concerning creation of a database for a restaurant made for Fundamentals of Databases Course at AGH UST 2021/22.
